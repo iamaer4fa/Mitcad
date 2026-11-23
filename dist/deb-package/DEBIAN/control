@@ -1,0 +1,25 @@
+Package: mitcad
+Version: 0.70.0
+Section: graphics
+Priority: optional
+Architecture: amd64
+Maintainer: MitCad Project <maintainer@mitcad.org>
+Description: Open source parametric desktop CAD application
+ MitCad is a parametric 3D CAD application that runs on Windows, Linux and macOS.
+ It features sketch-driven constraints and dimensions, a feature timeline,
+ and support for many file formats including STEP, IGES, BRep, STL, OBJ, DXF,
+ 3MF, FreeCAD (.f3d/.FCStd), SolidCraft (.sc), IPT, IFC, and RVT.
+ .
+ MitCad includes a tabbed toolbar, command panels with live preview, a browser,
+  timeline, and command search functionality. It supports 3D printing through
+ direct slicer integration and renders using a path-traced view with optional
+ Cycles CUDA/Metal GPU acceleration.
+ .
+ This package provides the main MitCad application executable and required
+ runtime libraries. It does NOT bundle development dependencies.
+ .
+ The application is GUI-based and requires a desktop environment with Qt6 support.
+ It integrates with the system through a .desktop launcher, icons, and MIME type
+ associations for design files.
+ .
+ WWW: https://mitcad.org/

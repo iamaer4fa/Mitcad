@@ -1,0 +1,22 @@
+#!/bin/sh
+# postrm script for mitcad
+set -e
+
+# Remove the desktop entry on package removal/ purge
+if [ -f usr/share/applications/mitcad.desktop ]; then
+    rm -f usr/share/applications/mitcad.desktop
+    if [ -x /usr/bin/update-desktop-database ]; then
+        update-desktop-database -q usr/share/applications/ 2>/dev/null || true
+    fi
+fi
+
+# Purge MIME database entries if requested
+if [ "$1" = "purge" ]; then
+    if [ -x /usr/bin/update-mime-database ]; then
+        update-mime-database usr/share/mime/ 2>/dev/null || true
+    fi
+    # Remove doc directory
+    rm -rf usr/share/doc/mitcad
+fi
+
+exit 0

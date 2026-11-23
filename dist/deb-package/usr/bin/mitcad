@@ -1,0 +1,28 @@
+#!/bin/sh
+# MitCad application launcher
+# This script is placed in the package before the application is built.
+# After building the application with CMake, the actual binary should be
+# installed at this location, or the script can be replaced with a symlink
+# to the built executable.
+#
+# To use after building:
+#   cmake --install . --prefix /usr
+#   or replace this script with: ln -sf /path/to/built/mitcad /usr/bin/mitcad
+#
+# For immediate use, this script launches the application if the binary
+# exists, otherwise it provides instructions.
+if [ -x /usr/lib/mitcad/mitcad ]; then
+    exec /usr/lib/mitcad/mitcad "$@"
+elif [ -x /usr/bin/mitcad-release ]; then
+    exec /usr/bin/mitcad-release "$@"
+else
+    echo "MitCad: Application binary not found."
+    echo "Please build the application first:"
+    echo "  mkdir build && cd build"
+    echo "  cmake -DCMAKE_BUILD_TYPE=Release .."
+    echo "  cmake --build --release"
+    echo "  sudo cmake --install . --prefix /usr"
+    echo ""
+    echo "Or install the built binary at /usr/lib/mitcad/mitcad"
+    exit 1
+fi

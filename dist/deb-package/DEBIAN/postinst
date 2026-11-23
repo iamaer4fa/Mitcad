@@ -1,0 +1,15 @@
+#!/bin/sh
+# postinst script for mitcad
+set -e
+
+# Update the desktop database if it exists
+if [ -x /usr/bin/update-desktop-database ]; then
+    update-desktop-database -q usr/share/applications/mitcad.desktop 2>/dev/null || true
+fi
+
+# Update MIME database if mime info exists
+if [ -x /usr/bin/update-mime-database ]; then
+    update-mime-database usr/share/mime/ 2>/dev/null || true
+fi
+
+exit 0

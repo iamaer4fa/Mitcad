@@ -1,0 +1,13 @@
+#!/bin/sh
+# prerm script for mitcad
+set -e
+
+# Remove the desktop entry before package removal
+if [ -f usr/share/applications/mitcad.desktop ]; then
+    rm -f usr/share/applications/mitcad.desktop
+    if [ -x /usr/bin/update-desktop-database ]; then
+        update-desktop-database -q usr/share/applications/ 2>/dev/null || true
+    fi
+fi
+
+exit 0
